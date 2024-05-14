@@ -11,11 +11,10 @@
                 <button type="submit">Search</button>
             </form>
         </div>
-        <div class="stats">
+        <!-- Fjern stats-seksjonen -->
+        <!-- <div class="stats">
             <span>{{ h.literal(stats.datasets_count) }} Datasets</span>
-            <!-- <span>{{ h.literal(stats.applications_count) }} Applications</span> -->
-            <!-- <span>{{ h.literal(stats.apis_count) }} APIs</span> -->
-        </div>
+        </div> -->
     </div>
     <div class="categories">
         <div class="category" each="group in h.group_list('name asc', 20)">
