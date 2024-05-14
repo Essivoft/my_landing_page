@@ -1,28 +1,27 @@
-{% extends "base.html" %} {% block page %}
+{% extends "base.html" %}
+
+{% block page %}
 <div class="landing-page">
-  <div
-    class="header-image"
-    style="background-image: url('/path/to/your/image.png')"
-  >
-    <h1>Open data service</h1>
-    <p>Making better use of public data in the Helsinki region</p>
-    <div class="search-box">
-      <form action="{{ h.url_for('dataset.search') }}" method="get">
-        <input type="text" name="q" placeholder="Tag" />
-        <button type="submit">Search</button>
-      </form>
+    <div class="header-image" style="background-image: url('/path/to/your/image.png');">
+        <h1>Open data service</h1>
+        <p>Making better use of public data in the Helsinki region</p>
+        <div class="search-box">
+            <form action="{{ h.url_for('dataset.search') }}" method="get">
+                <input type="text" name="q" placeholder="Tag">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="stats">
+            <span>{{ h.literal(stats.datasets_count) }} Datasets</span>
+            <!-- <span>{{ h.literal(stats.applications_count) }} Applications</span> -->
+            <!-- <span>{{ h.literal(stats.apis_count) }} APIs</span> -->
+        </div>
     </div>
-    <div class="stats">
-      <span>{{ h.literal(stats.datasets_count) }} Datasets</span>
-      <span>{{ h.literal(stats.applications_count) }} Applications</span>
-      <span>{{ h.literal(stats.apis_count) }} APIs</span>
+    <div class="categories">
+        <div class="category" each="group in h.group_list('name asc', 20)">
+            <i class="fa fa-icon"></i>
+            <span>{{ group.title }}</span>
+        </div>
     </div>
-  </div>
-  <div class="categories">
-    <div class="category" each="group in h.group_list('name asc', 20)">
-      <i class="fa fa-icon"></i>
-      <span>{{ group.title }}</span>
-    </div>
-  </div>
 </div>
 {% endblock %}
