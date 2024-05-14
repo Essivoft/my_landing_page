@@ -2,7 +2,23 @@
 
 {% block page %}
 <div class="landing-page">
-    <h1>Open data service</h1>
-    <p>Making better use of public data in the Helsinki region</p>
+    <div class="header-image" style="background-image: url('/path/to/your/image.png');">
+        <h1>Open data service</h1>
+        <p>Making better use of public data in the Helsinki region</p>
+        <div class="search-box">
+            <form action="{{ h.url_for('dataset.search') }}" method="get">
+                <input type="text" name="q" placeholder="Tag">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="categories">
+        {% for group in h.group_list('name asc', 20) %}
+        <div class="category">
+            <i class="fa fa-icon"></i>
+            <span>{{ group.title }}</span>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
